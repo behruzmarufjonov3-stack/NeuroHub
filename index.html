@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="NeuroHub — Two AIs think together to give you one better answer." />
+  <title>NeuroHub — Think Together</title>
+
+  <!-- Stylesheets (order matters) -->
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/think.css" />
+</head>
+<body>
+
+<div class="app-wrapper">
+
+  <!-- ── Header ──────────────────────────────────────────────── -->
+  <header class="header" role="banner">
+    <div class="header-inner">
+      <a href="/" class="logo" aria-label="NeuroHub home">
+        <div class="logo-mark" aria-hidden="true">N</div>
+        <span class="logo-text">NeuroHub <span>/ Think Together</span></span>
+      </a>
+      <span class="header-badge">Beta</span>
+    </div>
+  </header>
+
+  <!-- ── Main ────────────────────────────────────────────────── -->
+  <main class="content-area" role="main">
+
+    <!-- Page heading -->
+    <div class="page-header">
+      <h1 class="page-title">Two AIs, one answer</h1>
+      <p class="page-subtitle">
+        AI 1 drafts an answer. AI 2 fills the gaps and fixes mistakes.
+        AI 1 synthesises the best of both into a final response.
+      </p>
+    </div>
+
+    <!-- AI Selector -->
+    <section aria-label="Select AI models">
+      <div class="selector-section">
+        <span class="selector-label">Choose your AIs</span>
+
+        <div class="selector-row">
+
+          <!-- AI 1 picker -->
+          <div class="ai-select-group">
+            <span class="ai-select-label">AI 1 — Drafts &amp; Synthesises</span>
+            <div class="ai-picker" id="picker1" role="radiogroup" aria-label="Select AI 1"></div>
+          </div>
+
+          <!-- Arrow -->
+          <div class="selector-arrow" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </div>
+
+          <!-- AI 2 picker -->
+          <div class="ai-select-group">
+            <span class="ai-select-label">AI 2 — Reviews &amp; Refines</span>
+            <div class="ai-picker" id="picker2" role="radiogroup" aria-label="Select AI 2"></div>
+          </div>
+
+        </div>
+
+        <span class="selector-error" id="selectorError" role="alert"></span>
+      </div>
+    </section>
+
+    <!-- Pipeline visual -->
+    <div class="pipeline" aria-label="Thinking pipeline" role="img">
+      <div class="pipeline-node">
+        <div class="pipeline-dot gemini" id="pipeAI1Dot">G</div>
+        <div class="pipeline-label" id="pipeAI1Label"><strong>Gemini</strong>drafts</div>
+      </div>
+
+      <div class="pipeline-arrow" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/>
+        </svg>
+      </div>
+
+      <div class="pipeline-node">
+        <div class="pipeline-dot llama" id="pipeAI2Dot">L</div>
+        <div class="pipeline-label" id="pipeAI2Label"><strong>Llama</strong>refines</div>
+      </div>
+
+      <div class="pipeline-arrow" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/>
+        </svg>
+      </div>
+
+      <div class="pipeline-node">
+        <div class="pipeline-dot final" id="pipeFinalDot">✓</div>
+        <div class="pipeline-label"><strong>Final</strong>answer</div>
+      </div>
+    </div>
+
+    <!-- Question input -->
+    <div class="input-area" role="search">
+      <textarea
+        id="questionInput"
+        class="textarea"
+        placeholder="Ask anything… e.g. How does the immune system work?"
+        rows="2"
+        aria-label="Your question"
+        aria-multiline="true"
+      ></textarea>
+      <div class="input-footer">
+        <span class="input-hint">Press Enter to submit · Shift+Enter for new line</span>
+        <div class="input-actions">
+          <button
+            class="btn btn-danger btn-sm"
+            id="stopBtn"
+            style="display:none"
+            aria-label="Stop thinking"
+          >
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" aria-hidden="true">
+              <rect x="1" y="1" width="8" height="8" rx="1.5"/>
+            </svg>
+            Stop
+          </button>
+          <button
+            class="btn btn-primary"
+            id="askBtn"
+            aria-label="Submit question"
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+            Ask
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Example prompts -->
+    <div class="examples" id="examplesRow" role="list" aria-label="Example questions">
+      <button class="example-chip" role="listitem" onclick="setExample(this)">What causes inflation?</button>
+      <button class="example-chip" role="listitem" onclick="setExample(this)">How does the immune system work?</button>
+      <button class="example-chip" role="listitem" onclick="setExample(this)">Explain black holes simply</button>
+      <button class="example-chip" role="listitem" onclick="setExample(this)">Why do we dream?</button>
+      <button class="example-chip" role="listitem" onclick="setExample(this)">What is quantum entanglement?</button>
+    </div>
+
+    <!-- Results -->
+    <div class="results" id="results" aria-live="polite" aria-label="Thinking steps and answer"></div>
+
+  </main>
+
+</div>
+
+<!-- Scripts (order matters: config → api → ui) -->
+<script src="js/ai-config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/ui.js"></script>
+
+</body>
+</html>

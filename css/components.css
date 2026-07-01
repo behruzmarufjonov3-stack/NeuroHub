@@ -1,0 +1,184 @@
+/* ============================================================
+   NeuroHub — components.css
+   ============================================================ */
+
+/* ── Header ────────────────────────────────────────────────── */
+.header {
+  height: var(--header-height);
+  background: rgba(247,246,242,0.94);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  padding: 0 48px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-inner {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+
+.logo-mark {
+  width: 28px; height: 28px;
+  background: var(--text-primary);
+  border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Lora', serif;
+  font-size: 14px; font-weight: 400;
+  color: var(--bg-base);
+}
+
+.logo-text { font-size: 14px; font-weight: 500; color: var(--text-primary); }
+.logo-text span { color: var(--text-muted); font-weight: 400; }
+
+.header-badge {
+  font-size: 10px; font-weight: 500;
+  padding: 3px 9px;
+  border-radius: var(--radius-full);
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border-default);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ── Buttons ─────────────────────────────────────────────── */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 6px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px; font-weight: 500;
+  padding: 9px 18px;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+.btn:disabled { opacity: 0.35; cursor: not-allowed; pointer-events: none; }
+
+.btn-primary {
+  background: var(--text-primary);
+  color: #fff;
+  border-color: var(--text-primary);
+}
+.btn-primary:hover:not(:disabled) { background: #000; border-color: #000; }
+.btn-primary:active:not(:disabled) { transform: scale(0.98); }
+
+.btn-secondary {
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  border-color: var(--border-default);
+}
+.btn-secondary:hover:not(:disabled) { background: var(--bg-elevated); border-color: var(--border-strong); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-secondary);
+  border-color: transparent;
+}
+.btn-ghost:hover:not(:disabled) { background: var(--bg-elevated); color: var(--text-primary); }
+
+.btn-danger {
+  background: var(--danger-subtle);
+  color: var(--danger);
+  border-color: var(--danger-border);
+}
+.btn-danger:hover:not(:disabled) { background: var(--danger); color: #fff; }
+
+.btn-sm { font-size: 12px; padding: 6px 13px; }
+.btn-lg { font-size: 14px; padding: 11px 22px; }
+
+/* ── Textarea ────────────────────────────────────────────── */
+.textarea {
+  width: 100%;
+  background: transparent;
+  border: none; outline: none; resize: none;
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  padding: 18px 20px;
+  min-height: 60px;
+  max-height: 180px;
+  line-height: 1.7;
+}
+.textarea::placeholder { color: var(--text-muted); }
+
+/* ── Badge ───────────────────────────────────────────────── */
+.badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 11px; font-weight: 500;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  border: 1px solid transparent;
+  line-height: 1.4;
+}
+
+.badge-thinking { background: rgba(180,83,9,0.09); color: var(--warning); border-color: rgba(180,83,9,0.22); }
+.badge-done     { background: var(--success-subtle); color: var(--success); border-color: rgba(21,128,61,0.25); }
+.badge-stopped  { background: var(--warning-subtle); color: var(--warning); border-color: rgba(180,83,9,0.22); }
+.badge-error    { background: var(--danger-subtle);  color: var(--danger);  border-color: var(--danger-border); }
+
+/* ── AI Avatar ───────────────────────────────────────────── */
+.ai-avatar {
+  width: 32px; height: 32px;
+  border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 600;
+  flex-shrink: 0;
+  border: 1px solid transparent;
+}
+.ai-avatar.gemini { background: var(--gemini-subtle); color: var(--gemini); border-color: var(--gemini-border); }
+.ai-avatar.claude  { background: var(--claude-subtle); color: var(--claude); border-color: var(--claude-border); }
+.ai-avatar.gpt     { background: var(--gpt-subtle);    color: var(--gpt);    border-color: var(--gpt-border); }
+.ai-avatar.llama   { background: var(--llama-subtle);  color: var(--llama);  border-color: var(--llama-border); }
+
+/* ── Dot loader ──────────────────────────────────────────── */
+.dot-loader { display: inline-flex; align-items: center; gap: 4px; }
+.dot-loader span {
+  width: 4px; height: 4px; border-radius: 50%;
+  background: var(--text-muted);
+  animation: dotBounce 1.3s infinite ease;
+}
+.dot-loader span:nth-child(2) { animation-delay: 0.18s; }
+.dot-loader span:nth-child(3) { animation-delay: 0.36s; }
+@keyframes dotBounce {
+  0%,80%,100% { transform: scale(0.7); opacity: 0.4; }
+  40%         { transform: scale(1);   opacity: 1; }
+}
+
+/* ── Banner ──────────────────────────────────────────────── */
+.banner {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 16px 20px;
+  border-radius: var(--radius-lg);
+  border: 1px solid transparent;
+  font-size: 13px; line-height: 1.6;
+  animation: fadeSlideUp 0.25s ease;
+}
+.banner-icon    { font-size: 15px; flex-shrink: 0; margin-top: 1px; }
+.banner-content { flex: 1; }
+.banner-title   { font-weight: 600; margin-bottom: 2px; font-size: 13px; color: var(--text-primary); }
+.banner-desc    { color: var(--text-secondary); font-size: 12px; }
+.banner-actions { display: flex; gap: 8px; margin-top: 12px; }
+
+.banner-warning { background: rgba(180,83,9,0.06); border-color: rgba(180,83,9,0.18); }
+.banner-error   { background: var(--danger-subtle); border-color: var(--danger-border); }
+.banner-error .banner-title { color: var(--danger); }
+.banner-error .banner-desc  { color: #b91c1c; }
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

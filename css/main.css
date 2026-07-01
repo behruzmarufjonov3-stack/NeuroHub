@@ -1,0 +1,131 @@
+/* ============================================================
+   NeuroHub — main.css
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&display=swap');
+
+:root {
+  /* Backgrounds */
+  --bg-base:        #f7f6f2;
+  --bg-surface:     #ffffff;
+  --bg-elevated:    #efede7;
+  --bg-hover:       #e8e5dc;
+
+  /* Borders — clearly visible */
+  --border-subtle:  rgba(0,0,0,0.10);
+  --border-default: rgba(0,0,0,0.18);
+  --border-strong:  rgba(0,0,0,0.32);
+
+  /* Text — high contrast */
+  --text-primary:   #111110;
+  --text-secondary: #3d3c38;
+  --text-muted:     #7a7770;
+
+  /* Brand */
+  --accent:         #1a1a1a;
+  --accent-hover:   #000000;
+  --accent-subtle:  rgba(0,0,0,0.05);
+  --accent-border:  rgba(0,0,0,0.22);
+
+  /* AI colours — saturated and readable */
+  --gemini:         #1557e0;
+  --gemini-subtle:  rgba(21,87,224,0.10);
+  --gemini-border:  rgba(21,87,224,0.30);
+
+  --claude:         #c2410c;
+  --claude-subtle:  rgba(194,65,12,0.10);
+  --claude-border:  rgba(194,65,12,0.30);
+
+  --gpt:            #15803d;
+  --gpt-subtle:     rgba(21,128,61,0.10);
+  --gpt-border:     rgba(21,128,61,0.30);
+
+  --llama:          #6d28d9;
+  --llama-subtle:   rgba(109,40,217,0.10);
+  --llama-border:   rgba(109,40,217,0.30);
+
+  /* Status */
+  --success:        #15803d;
+  --success-subtle: rgba(21,128,61,0.10);
+  --warning:        #b45309;
+  --warning-subtle: rgba(180,83,9,0.10);
+  --danger:         #dc2626;
+  --danger-subtle:  rgba(220,38,38,0.08);
+  --danger-border:  rgba(220,38,38,0.28);
+
+  /* Spacing */
+  --space-1: 4px;   --space-2: 8px;   --space-3: 12px;
+  --space-4: 16px;  --space-5: 20px;  --space-6: 24px;
+  --space-8: 32px;  --space-10: 40px; --space-12: 48px;
+
+  /* Radii */
+  --radius-sm:   6px;
+  --radius-md:   10px;
+  --radius-lg:   14px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 14px rgba(0,0,0,0.10);
+  --shadow-lg: 0 8px 30px rgba(0,0,0,0.12);
+
+  /* Transitions */
+  --transition-fast: 0.12s ease;
+  --transition-base: 0.2s ease;
+
+  /* Layout — full width, no narrow centering */
+  --max-width:     1140px;
+  --header-height: 56px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg-base);
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-wrapper { display: flex; flex-direction: column; min-height: 100vh; }
+
+.content-area {
+  flex: 1;
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  /* Side padding only — never narrow the content */
+  padding: 40px 48px 64px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+h1 {
+  font-family: 'Lora', Georgia, serif;
+  font-weight: 400;
+  font-size: 36px;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+h2, h3, h4 { font-weight: 500; letter-spacing: -0.01em; }
+h2 { font-size: 18px; }
+h3 { font-size: 15px; }
+h4 { font-size: 13px; }
+
+p { color: var(--text-secondary); font-size: 14px; line-height: 1.75; }
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-default); border-radius: 3px; }
+
+.hidden { display: none !important; }
+
+@media (max-width: 900px)  { .content-area { padding: 32px 32px 48px; } }
+@media (max-width: 600px)  { .content-area { padding: 24px 20px 48px; } h1 { font-size: 26px; } }
