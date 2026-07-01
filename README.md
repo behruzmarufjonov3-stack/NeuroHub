@@ -4,7 +4,7 @@
 
 NeuroHub connects two AI models so they can **think together** — one drafts, the other refines, and together they produce a final answer that's stronger than either could generate alone.
 
-![NeuroHub Screenshot](assets/screenshot.png)
+![NeuroHub Screenshot](neurohub.png)
 
 ---
 
