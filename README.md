@@ -3,9 +3,6 @@
 > Two AIs collaborate to give you one better answer.
 
 NeuroHub connects two AI models so they can **think together** — one drafts, the other refines, and together they produce a final answer that's stronger than either could generate alone.
-
-![NeuroHub Screenshot](neurohub.png)
-
 ---
 
 ## How It Works
